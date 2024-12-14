@@ -1,0 +1,25 @@
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: hello-world
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: PathPrefix(`/hello/`)
+      kind: Rule
+      services:
+        - name: hello-world
+          port: 80
+      middlewares:
+        - name: hello-world
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: hello-world
+spec:
+  stripPrefix:
+    prefixes:
+      - /hello/

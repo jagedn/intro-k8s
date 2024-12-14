@@ -70,3 +70,20 @@ port-forward 8080:80
 ## Service
 
 kubectl apply -f service.yml
+
+## ConfigMaps (vs Secrets)
+
+kubectl apply -f configmap.yaml
+
+kubectl apply -f deployment-config.yml
+
+
+## Clean all
+
+kubectl delete -f deployment-config.yml -f configmap.yml -f service.yml -f traefik.yml
+
+k3d cluster delete lab
+
+## TODO
+
+PersistentVolume + PersistentVolumeClaim

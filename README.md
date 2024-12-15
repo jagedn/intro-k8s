@@ -17,7 +17,9 @@ https://github.com/derailed/k9s/releases
 
 `curl -s https://raw.githubusercontent.com/k3d-io/k3d/main/install.sh | bash`
 
-`k3d cluster create lab --port 9999:80@loadbalancer --registry-create lab-registry`
+`k3d registry create lab-registry.localhost --port 38701`
+
+`k3d cluster create lab --port 9999:80@loadbalancer --registry-use k3d-lab-registry.localhost:38701`
 
 `docker ps` # find the registry port
 

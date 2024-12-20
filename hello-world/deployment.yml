@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: hello-world
-          image: lab-registry:38701/hello-world
+          image: lab-registry:38117/hello-world
           #imagePullPolicy: Always
           ports:
             - containerPort: 80

@@ -1,0 +1,11 @@
+server {
+    listen  80;
+
+    location / {
+        root /usr/share/nginx/html;
+        ssi on;
+        set $hello "${APP_HELLO}";
+        set $whoami "${HOSTNAME}";
+    }
+
+}    

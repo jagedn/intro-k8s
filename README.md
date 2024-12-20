@@ -17,11 +17,23 @@ https://github.com/derailed/k9s/releases
 
 `curl -s https://raw.githubusercontent.com/k3d-io/k3d/main/install.sh | bash`
 
+# Docker registry
+
 `k3d registry create lab-registry.localhost --port 38701`
+
+test the registry
+
+```
+docker pull hello-world
+docker image tag hello-world k3d-lab-registry.localhost:38701/docker-hello
+docker push k3d-lab-registry.localhost:38701/docker-hello
+docker run -rm -it k3d-lab-registry.localhost:38701/docker-hello
+``` 
+
+# Our cluster
 
 `k3d cluster create lab --port 9999:80@loadbalancer --registry-use k3d-lab-registry.localhost:38701`
 
-`docker ps` # find the registry port
 
 `k9s`
 
@@ -48,37 +60,22 @@ contexts:
 current-context: k3d-lab
 ```
 
-# Pod -> Deployment -> Service -> Ingress
 
-# ConfigMap vs Secret
+# 1. Hello world
 
-# Hello wolrd
+follow hellow-world/README.md
 
-cd hello-world
+# 2. ConfigMap
 
-docker build -t hello-world .
+follow config-maps/README.md
 
-docker tag hello-world:latest lab-registry.localhost:38701/hello-world
+# 3. Secrets
 
-docker push lab-registry.localhost:38701/hello-world
+follow secrets/README.md
 
-## Pods & Deployment
+# 4. Volumes
 
-kubectl apply -f deployment.yml
-
-port-forward 8080:80
-
-
-## Service
-
-kubectl apply -f service.yml
-
-## ConfigMaps (vs Secrets)
-
-kubectl apply -f configmap.yaml
-
-kubectl apply -f deployment-config.yml
-
+follow volumes/README.md
 
 ## Clean all
 
@@ -86,6 +83,3 @@ kubectl delete -f deployment-config.yml -f configmap.yml -f service.yml -f traef
 
 k3d cluster delete lab
 
-## TODO
-
-PersistentVolume + PersistentVolumeClaim

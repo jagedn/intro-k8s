@@ -16,7 +16,14 @@ spec:
     spec:
       containers:
         - name: hello-world
-          image: lab-registry:38117/hello-world
-          #imagePullPolicy: Always
+          image: k3d-lab-registry.localhost:38701/hello-world
+          imagePullPolicy: Always
           ports:
             - containerPort: 80
+          env:
+          - name: APP_HELLO
+            valueFrom:
+              configMapKeyRef:
+                name: hello-world
+                key: some.value
+          

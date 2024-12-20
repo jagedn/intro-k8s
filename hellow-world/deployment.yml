@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-world
+  labels:
+    app: hello-world
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hello-world
+  template:
+    metadata:
+      labels:
+        app: hello-world
+    spec:
+      containers:
+        - name: hello-world
+          image: k3d-lab-registry.localhost:38701/hello-world
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+          env:
+          - name: APP_HELLO
+            value: "a pod in the k3d cluster"
+          

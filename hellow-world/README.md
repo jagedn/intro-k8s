@@ -22,7 +22,7 @@ kubectl apply -f service.yml
 
 ## Ingress (Traefik)
 
-kubectl apply -f ingress.yml
+kubectl apply -f traefik.yml
 
 
 ## Testing

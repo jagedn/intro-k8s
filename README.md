@@ -83,3 +83,4 @@ kubectl delete -f deployment-config.yml -f configmap.yml -f service.yml -f traef
 
 k3d cluster delete lab
 
+k3d registry delete lab-registry.localhost

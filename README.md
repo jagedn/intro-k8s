@@ -1,5 +1,8 @@
 # Intro Kubernetes
 
+
+https://youtube.com/playlist?list=PL-BJ5myith5gYKkKPVCSUR6148jn0YRrX
+
 # requirements
 
 - Linux
